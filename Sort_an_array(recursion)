@@ -1,0 +1,37 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void Insert(vector<int> &v, int val){
+    if(v.size() == 0 || v[v.size()-1] <= val ){
+    v.push_back(val);
+    return;
+    }
+    
+    int temp = v[v.size()-1];
+    v.pop_back();
+    Insert(v, val);
+    v.push_back(temp);
+}
+
+void Sort(vector<int>& v){
+    if(v.size() == 0) return;
+    int val = v[v.size()-1];
+    v.pop_back();
+    Sort(v);
+    Insert(v, val);
+    
+}
+
+int main() {
+    vector<int> v = {2,9,2,3,1,5,0};
+    
+    Sort(v);
+    
+    for(int nums : v){
+        cout<< nums << endl;
+    }
+    
+    return 0;
+}
