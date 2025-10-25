@@ -1,0 +1,43 @@
+// Implemented the Height of the Tree by Recursion
+
+#include <iostream>
+#include <vector>
+
+
+using namespace std;
+
+struct TreeNode{
+    int data;
+    TreeNode* left;
+    TreeNode* right;
+    
+    TreeNode(int val){
+    data = val;
+    left = NULL;
+    right = NULL;
+    }
+    
+};
+int height(TreeNode* root){
+    if(root == nullptr) return 0;
+    
+    int left_height = height(root->left);
+    int right_height = height(root->right);
+    
+    return 1+max(left_height, right_height);
+    
+}
+int main() {
+    TreeNode* root = new TreeNode(11);
+    root->left = new TreeNode(12);
+    root->right = new TreeNode(13);
+    root->left->left = new TreeNode(14);
+    root->left->right = new TreeNode(15);
+    root-> right->left = new TreeNode(16);
+    root->right-> right = new TreeNode(17);
+    
+    int ht = height(root);
+    cout<< "height of the tree: "<< ht<< endl;
+    
+    return 0;
+}
