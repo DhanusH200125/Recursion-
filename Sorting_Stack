@@ -1,0 +1,46 @@
+// Implementing sort on a stack
+
+#include <iostream>
+#include <stack>
+
+
+using namespace std;
+
+void insert_st(stack<int> &st, int temp){
+    if(st.empty() || st.top()<= temp){
+        st.push(temp);
+        return;
+    }
+    int val = st.top();
+    st.pop();
+    insert_st(st, temp);
+    st.push(val);
+}
+
+void sort_st(stack<int> &st){
+    if(st.size() == 1) return;
+    int temp = st.top();
+    st.pop();
+    sort_st(st);
+    insert_st(st, temp);
+    
+}
+    
+
+int main() {
+
+    stack<int> st;
+    st.push(2);
+    st.push(1);
+    st.push(7);
+    st.push(0);
+    
+    
+    sort_st(st);
+    while(!st.empty()){
+        int t = st.top();
+        cout<<t<< endl;
+        st.pop();        // 7,2,1,0
+    }
+    return 0;
+}
