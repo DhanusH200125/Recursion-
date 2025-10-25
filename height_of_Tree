@@ -37,7 +37,8 @@ int main() {
     root->right-> right = new TreeNode(17);
     
     int ht = height(root);
-    cout<< "height of the tree: "<< ht<< endl;
+    cout<< "height of the tree: "<< ht<< endl;   // Output: height of the tree: 3
+
     
     return 0;
 }
